@@ -1,0 +1,15 @@
+VAR x15;  VAR a;  VAR b;  VAR c;
+cout x15;
+x15 = a + b;
+cout x15;
+a = 42;  b = 5;  c = 2;
+cout a;
+x15 = a*(b-c+10);
+cout a; cout b; cout c;
+cout x15;
+c = b/(c-2);
+cout c;
+c = a<b;  cout c;
+c = a>b;  cout c;
+c = a==b; cout c;  
+a = ((c-2)==0);  cout a;

@@ -1,0 +1,8 @@
+x15 = y*42 + w/(a+b);
+a=(b+c)*(d-e);
+x  =  (a * ( b - c / (d + e) * (f - g) ) ) + 27;
+z = (a-42;
+j = x/3);
+VAR a;
+VAR b;
+cout x15;
