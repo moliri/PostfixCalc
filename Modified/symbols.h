@@ -7,9 +7,9 @@ using namespace std;
 //SYMBOL class declaration
 class SYMBOL {
 	public: 
-		//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space. 
+		//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space; use malloc function.
 		SYMBOL (char* symbolName);
-		//Destructor: Frees the memory allocated for the name when the object was created
+		//Destructor: Frees the memory allocated for the name when the object was created; use free function.
 		~SYMBOL();
 		//Prints the name of the symbol
 		void print() const;

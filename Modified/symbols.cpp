@@ -4,13 +4,17 @@ using namespace std;
 
 
 SYMBOL::SYMBOL (char* symbolName) {
-	//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space. 
+	//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space. Use malloc function.
 
+	int size = sizeof(symbolName); //find size of input symbolName
+	char*symbolNameSpace; //create a pointer to a new area to store the name
+	symbolNameSpace = (char*)malloc(size); //allocate space
+	*symbolNameSpace = *symbolName; //copies name from input to storage
 }
 
 
 SYMBOL::~SYMBOL() {
-	//Destructor: Frees the memory allocated for the name when the object was created
+	//Destructor: Frees the memory allocated for the name when the object was created. Use free function.
 
 }
 

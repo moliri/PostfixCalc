@@ -8,7 +8,7 @@ using namespace std;
 class symbolList {
 	public: 
 		//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space. 
-		SYMBOL (char* symbolName);
+		SYMBOL(char* symbolName);
 		//Destructor: Frees the memory allocated for the name when the object was created
 		~SYMBOL();
 		//Prints the name of the symbol
