@@ -8,7 +8,7 @@ using namespace std;
 class SYMBOL {
 	public: 
 		//Constructor: Mallocs new space for the symbol name and then copies the name from the argument pointer to the newly allocated space; use malloc function.
-		SYMBOL (char* symbolName);
+		SYMBOL (char* symbolNameInput);
 		//Destructor: Frees the memory allocated for the name when the object was created; use free function.
 		~SYMBOL();
 		//Prints the name of the symbol
@@ -21,7 +21,7 @@ class SYMBOL {
 
 	private:
 		// points to a set of bytes that represent the name of the symbol
-		char* symbolName;  
+		char* symbolNameLocation;  
 
 };
 
