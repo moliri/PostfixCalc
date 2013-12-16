@@ -39,8 +39,7 @@ int SYMBOL::isThisMyName(char* inputName) const {
 
 void SYMBOL::copyMyName(char** nameAddress) {
 	//Takes a pointer to char as an argument. Mallocs enough space to hold the string representing the name and assigns that address to the argument.  It then copies the name to the newly allocated space.
-
-	
+		
 	int size = strlen(symbolNameLocation); //find length of input symbolName
 	*nameAddress = (char*)malloc(size+1); //allocate space +1 for null
 	strcpy(*nameAddress, symbolNameLocation); //copy name to the new address (dereferenced double pointer)
