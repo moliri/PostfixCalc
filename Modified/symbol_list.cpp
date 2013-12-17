@@ -32,16 +32,17 @@ void symbolList::print() const {
 	}
 }
 
-int symbolList::addSymbol(SYMBOL *inputSymbol) const {
+int symbolList::addSymbol(SYMBOL *inputSymbol) {
 	//If the list is full, return SYM_LIST_FULL. Else, if the list doesn't allow duplicates, check if a symbol object with the same name as the input occurs [use isThisMyName]. If so, return DUPLICATE_SYMBOL. Else, add the symbol to list end and return 0.
-
+	char* inputHolder; //for converting SYMBOL* to char*
+	inputSymbol->copyMyName(&inputHolder); //copy input
 	if(symbolCount == LISTLEN) { //if list is full
 		return SYM_LIST_FULL;
 	}
 
 	else if(allowDups == DONTALLOWDUPLICATES) { //if no duplicates
 		for(int i = 0; i < LISTLEN; i++) {
-			if (symbolArray[i]->isThisMyName(inputSymbol) { //check if current symbol is same as input symbol
+			if (symbolArray[i]->isThisMyName(inputHolder)) { //check if current symbol is same as input symbol
 				return DUPLICATE_SYMBOL;
 			}
 		}
@@ -53,17 +54,17 @@ int symbolList::addSymbol(SYMBOL *inputSymbol) const {
 	}
 }
 		
-int symbolList::getSymbol(SYMBOL *keyGetSymbol, SYMBOL **receiveSymbol) const {
+int symbolList::getSymbol(char* keyGetSymbol, SYMBOL** receiveSymbol) {
 	//If no symbol with the key name occurs in the list, return SYMBOL_NOT_FOUND. Else, malloc space for a symbol into the second argument pointer and copy the first occurence of the symbol to the newly allocated space [use copyMyName].
-
+	
 	for(int i = 0; i < LISTLEN; i++) {
-		if(symbolArray[i] == keyGetSymbol) {
+		if (symbolArray[i]->isThisMyName(keyGetSymbol)) { //check if current symbol is same as key
+			int keySize = strlen(keyGetSymbol); //find length of the key
+			*receiveSymbol = (SYMBOL*)malloc(keySize+1); //allocate space +1 for null
 
-			/* char* name = SYMBOL.copyMyName(keyGetSymbol);
-			int size = strlen(name); //find length of the key
-			receiveSymbol = (char*)malloc(size+1); //allocate space +1 for null
-			strcpy(receiveSymbol, name); //copies symbol into storage from input 
-			*/
+			int spaceSize = sizeof(**receiveSymbol); //check size to copy
+			memcpy(*receiveSymbol, keyGetSymbol, spaceSize); //copies symbol into allocated space
+			
 		}
 		else {
 			return SYMBOL_NOT_FOUND;
@@ -71,6 +72,6 @@ int symbolList::getSymbol(SYMBOL *keyGetSymbol, SYMBOL **receiveSymbol) const {
 	}
 }
 
-int symbolList::removeSymbol(char *keyRemoveSymbol) const {
+int symbolList::removeSymbol(char *keyRemoveSymbol) {
 	//If no symbol with the key name occurs in the list, return SYMBOL_NOT_FOUND. Else, remove the first occurence, destroy the SYMBOL object, and move all other symbols down the array and return 0.
 }
