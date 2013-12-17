@@ -74,4 +74,15 @@ int symbolList::getSymbol(char* keyGetSymbol, SYMBOL** receiveSymbol) {
 
 int symbolList::removeSymbol(char *keyRemoveSymbol) {
 	//If no symbol with the key name occurs in the list, return SYMBOL_NOT_FOUND. Else, remove the first occurence, destroy the SYMBOL object, and move all other symbols down the array and return 0.
+
+	for(int i = 0; i < LISTLEN; i++) {
+		if (symbolArray[i]->isThisMyName(keyRemoveSymbol)) { //check if current symbol is same as key
+			delete symbolArray[i]; //remove/delete current one
+			symbolArray[i+1] = symbolArray[i+2]; //shifting next symbol in the array down by one
+			return 0;
+		}
+		else {
+			return SYMBOL_NOT_FOUND;
+		}
+	}
 }
