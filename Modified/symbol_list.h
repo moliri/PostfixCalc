@@ -28,7 +28,7 @@ class symbolList {
 
 	private:
 		// array of pointers with length LISTLEN, holds a list of SYMBOL objects
-		SYMBOL *symbolArray[LISTLEN] = {};
+		SYMBOL *symbolArray[LISTLEN];
 		//number of symbols currently in the list
 		int symbolCount;
 		//indicates whether or not the list is allowed to have duplicate symbols (same name)
