@@ -21,7 +21,7 @@ void symbolList::print() const {
 	//If empty list, print message. Else, print "Printing SYMBOL list:" followed by the list of symbols on the next line, indented by 5 spaces
 
 	if(symbolCount == 0) {
-		cout << "Symbol list is empty."; 
+		cout << "Symbol list is empty." <<endl; 
 	}
 	else {
 		cout << "Printing SYMBOL list:" << endl;
@@ -37,15 +37,22 @@ void symbolList::print() const {
 int symbolList::addSymbol(SYMBOL *inputSymbol) {
 	//If the list is full, return SYM_LIST_FULL. Else, if the list doesn't allow duplicates, check if a symbol object with the same name as the input occurs [use isThisMyName]. If so, return DUPLICATE_SYMBOL. Else, add the symbol to list end and return 0.
 	char* inputHolder; //for converting SYMBOL* to char*
-	inputSymbol->copyMyName(&inputHolder); //copy input
+	int test = 0;
 	if(symbolCount == LISTLEN) { //if list is full
 		return SYM_LIST_FULL;
 	}
 
 	if(allowDups == DONTALLOWDUPLICATES) { //if no duplicates
 		for(int i = 0; i < LISTLEN; i++) {
-			if (symbolArray[i]->isThisMyName(inputHolder)) { //check if current symbol is same as input symbol
+			inputSymbol->copyMyName(&inputHolder); //copy input
+			int test = symbolArray[i]->isThisMyName(inputHolder);
+			if (test == 1) { //check if current symbol is same as input symbol
 				return DUPLICATE_SYMBOL;
+			}
+			else {
+				symbolArray[symbolCount] = inputSymbol; //assign input to next available array spot
+				symbolCount++; //increase count
+				return 0;
 			}
 		}
 	}

@@ -28,14 +28,30 @@ void SYMBOL::print() const {
 
 }
 
-int SYMBOL::isThisMyName(char* inputName) const {
+int SYMBOL::isThisMyName(char* inputName) {
+	//Compares input name to symbol name and returns 1 if the same, 0 otherwise.
+
+	int different = strcmp(inputName, symbolNameLocation);
+	if(different == 0) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+/*
+int SYMBOL::isThisMyName(char* inputName) {
 	//Compares input name to symbol name and returns 1 if the same, 0 otherwise. 
 	
-	if (strcmp(inputName, symbolNameLocation) == 0)  //returns 0 if equal
+	int different = strcmp(symbolNameLocation, inputName);
+	if(different == 0) {  //returns 0 if equal
 		return 1;
-	else 
+	}
+	else if((different == -1) ||(different == 1)) {
 		return 0;
-}
+	}
+} */
 
 void SYMBOL::copyMyName(char** nameAddress) {
 	//Takes a pointer to char as an argument. Mallocs enough space to hold the string representing the name and assigns that address to the argument.  It then copies the name to the newly allocated space.

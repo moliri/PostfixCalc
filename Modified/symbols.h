@@ -2,6 +2,7 @@
 #define SYMBOLS_H
 
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 //SYMBOL class declaration
@@ -14,7 +15,7 @@ class SYMBOL {
 		//Prints the name of the symbol
 		void print() const;
 		//Compares input name to symbol name and returns 1 if the same, 0 otherwise. 
-		int isThisMyName(char* inputName) const;
+		int isThisMyName(char* inputName);
 		//Mallocs enough space to hold the string representing the name and assigns that address to the argument.  It then copies the name to the newly allocated space. 
 		void copyMyName(char** nameAddress);
 
