@@ -36,16 +36,16 @@ void symbolList::print() const {
 
 int symbolList::addSymbol(SYMBOL *inputSymbol) {
 	//If the list is full, return SYM_LIST_FULL. Else, if the list doesn't allow duplicates, check if a symbol object with the same name as the input occurs [use isThisMyName]. If so, return DUPLICATE_SYMBOL. Else, add the symbol to list end and return 0.
-	char* inputHolder; //for converting SYMBOL* to char*
-	int test = 0;
 	if(symbolCount == LISTLEN) { //if list is full
 		return SYM_LIST_FULL;
 	}
 
 	if(allowDups == DONTALLOWDUPLICATES) { //if no duplicates
+		char* inputHolder;
+		int test = 0;
 		for(int i = 0; i < LISTLEN; i++) {
 			inputSymbol->copyMyName(&inputHolder); //copy input
-			int test = symbolArray[i]->isThisMyName(inputHolder);
+			test = symbolArray[i]->isThisMyName(inputHolder);
 			if (test == 1) { //check if current symbol is same as input symbol
 				return DUPLICATE_SYMBOL;
 			}

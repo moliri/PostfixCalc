@@ -11,20 +11,21 @@ SYMBOL::SYMBOL (char* symbolNameInput) {
 	int size = strlen(symbolNameInput); //find length of input symbolName
 	symbolNameLocation = (char*)malloc(size+1); //allocate space +1 for null
 	strcpy(symbolNameLocation, symbolNameInput); //copies name into storage from input
+	*(symbolNameLocation + size) = '\0'; //add null at end of dereferenced pointer (aka name)
 }
 
 
 SYMBOL::~SYMBOL() {
 	//Destructor: Frees the memory allocated for the name when the object was created. Use free function.
 
-	free(symbolNameLocation);
+	free((void*)symbolNameLocation);
 }
 
 
 void SYMBOL::print() const {
 	//Prints the name of the symbol
 
-	cout << "Symbol name: " << symbolNameLocation;
+	cout << symbolNameLocation;
 
 }
 
@@ -32,7 +33,7 @@ int SYMBOL::isThisMyName(char* inputName) {
 	//Compares input name to symbol name and returns 1 if the same, 0 otherwise.
 
 	int different = strcmp(inputName, symbolNameLocation);
-	if(different == 0) {
+	if(different == 0) { //returns 0 if equal
 		return 1;
 	}
 	else {
