@@ -26,8 +26,10 @@ void symbolList::print() const {
 	else {
 		cout << "Printing SYMBOL list:" << endl;
 		for(int i = 0; i < LISTLEN; i++){
-			cout << "/t";
-			cout << symbolArray[i] << endl;
+			cout << "\t";
+			char* name;
+			symbolArray[i]->copyMyName(&name);
+			cout << name << endl;
 		}
 	}
 }
@@ -40,18 +42,16 @@ int symbolList::addSymbol(SYMBOL *inputSymbol) {
 		return SYM_LIST_FULL;
 	}
 
-	else if(allowDups == DONTALLOWDUPLICATES) { //if no duplicates
+	if(allowDups == DONTALLOWDUPLICATES) { //if no duplicates
 		for(int i = 0; i < LISTLEN; i++) {
 			if (symbolArray[i]->isThisMyName(inputHolder)) { //check if current symbol is same as input symbol
 				return DUPLICATE_SYMBOL;
 			}
 		}
 	}
-	else {
-		symbolArray[symbolCount] = inputSymbol; //assign input to next available array spot
-		symbolCount++; //increase count
-		return 0;
-	}
+	symbolArray[symbolCount] = inputSymbol; //assign input to next available array spot
+	symbolCount++; //increase count
+	return 0;
 }
 		
 int symbolList::getSymbol(char* keyGetSymbol, SYMBOL** receiveSymbol) {

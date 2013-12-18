@@ -65,11 +65,13 @@ int main() {
 	err = lst1.addSymbol(s3);
 	lst1.print();
 
-
+	cout << "lst test"; //LM 
 	// Begin tests for symbol list class.
-	lst.print();
+	lst.print(); //should print empty - LM
 	s3 = new SYMBOL("tst1");
 	err = lst.addSymbol(s3);
+	lst.print(); //should print 1, prints empty, so not incrementing symbolCount -LM
+	cout << "debug" << err; //LM
 	if(err!=0) printError(err);
 	s3 = new SYMBOL("tst2");
 	err = lst.addSymbol(s3);
